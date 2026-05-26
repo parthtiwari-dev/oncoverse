@@ -10,7 +10,7 @@
 
 ## Current Status - 2026-05-27
 
-**Status:** v0.1 project foundation is underway. The repo has a working Vite React TypeScript setup and is moving from stock scaffold to the OncoVerse visual system.
+**Status:** v0.1 project foundation is underway. The repo now has the OncoVerse shell, typed cancer data, a source-backed MTC data file, and a first procedural 3D interaction slice.
 
 What is now proven:
 - Node is updated and stable enough for project work: `v24.16.0`.
@@ -18,11 +18,12 @@ What is now proven:
 - Vite production build passes.
 - Core v0.1 frontend libraries are installed: Three.js, R3F, Drei, Framer Motion, Zustand, Tailwind, and lucide-react.
 - `node_modules/` and `dist/` are ignored by Git.
+- MTC data has stable mesh IDs for thyroid, tumor, jugular vein, recurrent laryngeal nerve, lymph nodes, and trachea.
+- The first R3F scene supports auto-orbit, drag/zoom, hover, click selection, and info-panel updates.
 
 Current focus:
-- Tailwind v4 design-system wiring.
-- Clean architecture folders for v0.1.
-- A polished minimal OncoVerse shell before the first real MTC interaction slice.
+- Validate the first interactive MTC slice in browser on desktop and mobile widths.
+- Improve anatomy fidelity after the placeholder interaction contract feels right.
 
 ---
 
@@ -58,16 +59,17 @@ Current focus:
 | Real anatomy assets | Open | No GLB model strategy is locked yet. Placeholder anatomy is acceptable for the first interaction slice. |
 | Medical accuracy review | Open | MTC content needs cited sources and careful wording before public release. |
 | Performance budget | Open | 3D model size, lazy loading, and mobile frame rate must be watched early. |
+| R3F async chunk | Open | The shell is split from the 3D bundle, but the async WebGL chunk is still large and needs later optimization. |
 
 ---
 
 ## Next Steps
 
-1. Define the cancer TypeScript schema.
-2. Create the first `medullary-thyroid-carcinoma` JSON entry.
-3. Build the first non-GLB placeholder MTC scene with stable mesh IDs.
-4. Connect mesh selection to the right-side structure panel.
-5. Add the four directory stubs after the MTC slice works.
+1. Browser-check the MTC slice on desktop and mobile widths.
+2. Refine procedural anatomy proportions, labels, and selected-state polish.
+3. Add a real search/directory surface for the four stub cancers.
+4. Decide the first real GLB/anatomy asset path.
+5. Add focused schema/data validation to the project scripts.
 
 ---
 
@@ -108,3 +110,23 @@ Validation:
 - `npm run build` passed.
 - `npm run lint` passed.
 - `dist/` and `node_modules/` remain ignored by Git.
+
+### Session 4 - Data backbone and first MTC 3D slice - 2026-05-27
+
+What changed:
+- Added the typed cancer data contract.
+- Added source-backed Medullary Thyroid Carcinoma JSON.
+- Added four roadmap directory stubs: lung adenocarcinoma, invasive ductal breast cancer, glioblastoma, and ALL.
+- Added a typed cancer registry, data hook, and Zustand atlas state.
+- Replaced the static anatomy shell with a lazy-loaded R3F scene.
+- Added procedural clickable structures for thyroid lobes, tumor mass, jugular vein, recurrent laryngeal nerve, lymph nodes, and trachea.
+- Connected selected mesh and active stage to the right info panel.
+
+Validation:
+- `npm run build` passed.
+- `npm run lint` passed.
+- Data-contract check passed for all five cancer JSON files.
+
+Notes:
+- MTC data is still marked `needs-review`.
+- The initial app chunk is split from the 3D scene, but the async 3D chunk remains large because Three/R3F/Drei are heavy.

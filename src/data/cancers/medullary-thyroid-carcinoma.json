@@ -1,0 +1,229 @@
+{
+  "id": "medullary-thyroid-carcinoma",
+  "atlas_status": "complete",
+  "name": "Medullary Thyroid Carcinoma",
+  "aliases": ["MTC", "C-cell thyroid cancer", "medullary thyroid cancer"],
+  "icd11_code": "2D10.Y",
+  "organ_system": "head-neck",
+  "primary_organ": "thyroid",
+  "model_file": null,
+  "affected_meshes": [
+    "thyroid_right_lobe",
+    "tumor_mass",
+    "jugular_vein",
+    "recurrent_laryngeal_nerve",
+    "lymph_nodes"
+  ],
+  "overview": "Medullary Thyroid Carcinoma is a rare thyroid cancer that begins in parafollicular C-cells, the thyroid cells that produce calcitonin. It can appear as a thyroid nodule, may involve lymph nodes earlier than some other thyroid cancers, and can be sporadic or linked to inherited RET gene changes. OncoVerse explains these ideas visually for education only, not diagnosis or treatment planning.",
+  "epidemiology": {
+    "incidence": "About 1-5% of thyroid cancers in current references.",
+    "median_age": 50,
+    "hereditary_percentage": 25
+  },
+  "symptoms": [
+    {
+      "id": "neck-swelling",
+      "label": "Neck mass or swelling",
+      "cause": "A thyroid nodule, tumor growth, or involved lymph nodes can create a visible or palpable neck lump.",
+      "stage_onset": "early-tumor",
+      "source_ids": ["statpearls-mtc", "nci-mtc"]
+    },
+    {
+      "id": "hoarseness",
+      "label": "Voice hoarseness",
+      "cause": "The recurrent laryngeal nerve runs close to the thyroid and helps move the vocal cords. Pressure, invasion, or surgical injury around this nerve can affect voice.",
+      "stage_onset": "local-invasion",
+      "source_ids": ["statpearls-rln", "statpearls-mtc"]
+    },
+    {
+      "id": "diarrhea-flushing",
+      "label": "Diarrhea or flushing",
+      "cause": "Some MTCs produce high levels of calcitonin or related peptides, which can be associated with diarrhea or flushing.",
+      "stage_onset": "advanced",
+      "source_ids": ["statpearls-mtc"]
+    },
+    {
+      "id": "neck-pain-pressure",
+      "label": "Neck pressure or pain",
+      "cause": "Local growth near vessels, airway, muscles, or lymph nodes can cause pressure symptoms that need clinician evaluation.",
+      "stage_onset": "vascular-involvement",
+      "source_ids": ["statpearls-mtc", "nci-mtc"]
+    }
+  ],
+  "structures": [
+    {
+      "mesh_id": "thyroid_right_lobe",
+      "label": "Thyroid Gland - Right Lobe",
+      "description": "One side of the thyroid gland. In this atlas scene it represents the site where C-cells can undergo malignant transformation.",
+      "cancer_relevance": "MTC begins in parafollicular C-cells, not the iodine-handling follicular cells that give rise to many other thyroid cancers.",
+      "source_ids": ["statpearls-mtc", "nci-dictionary-mtc"]
+    },
+    {
+      "mesh_id": "thyroid_left_lobe",
+      "label": "Thyroid Gland - Left Lobe",
+      "description": "The opposite thyroid lobe, shown for anatomical context.",
+      "cancer_relevance": "Hereditary MTC risk can involve the whole thyroid because C-cells exist throughout the gland.",
+      "source_ids": ["statpearls-mtc", "nci-mtc"]
+    },
+    {
+      "mesh_id": "tumor_mass",
+      "label": "Tumor Mass",
+      "description": "A visual placeholder for abnormal C-cell growth inside or near the thyroid lobe.",
+      "cancer_relevance": "As the mass grows, it may affect nearby lymph nodes, nerves, vessels, airway, or swallowing structures depending on the individual case.",
+      "source_ids": ["statpearls-mtc", "nci-mtc"]
+    },
+    {
+      "mesh_id": "jugular_vein",
+      "label": "Jugular Vein",
+      "description": "A major neck vein used here to show why vascular involvement can make a report sound alarming.",
+      "cancer_relevance": "When report language mentions encasement, compression, or possible clot near a large vein, it means clinicians need to interpret how the tumor relates to nearby blood flow and surgical anatomy.",
+      "source_ids": ["statpearls-mtc"]
+    },
+    {
+      "mesh_id": "recurrent_laryngeal_nerve",
+      "label": "Recurrent Laryngeal Nerve",
+      "description": "A nerve that passes behind the thyroid region and supplies most intrinsic muscles of the larynx.",
+      "cancer_relevance": "This is the voice connection: irritation, compression, invasion, or injury near this nerve can contribute to vocal cord problems and hoarseness.",
+      "source_ids": ["statpearls-rln", "statpearls-mtc"]
+    },
+    {
+      "mesh_id": "lymph_nodes",
+      "label": "Central Neck Lymph Nodes",
+      "description": "Small immune-system structures in the neck that can be checked when MTC is staged.",
+      "cancer_relevance": "MTC can involve cervical lymph nodes, so lymph node mapping is a key part of understanding spread.",
+      "source_ids": ["statpearls-mtc"]
+    },
+    {
+      "mesh_id": "trachea",
+      "label": "Trachea",
+      "description": "The airway running through the neck, shown for spatial context.",
+      "cancer_relevance": "Large thyroid-region disease can create pressure symptoms near the airway, but this atlas does not infer a patient's airway status.",
+      "source_ids": ["statpearls-mtc"]
+    }
+  ],
+  "stages": [
+    {
+      "id": "normal",
+      "label": "Normal Thyroid Context",
+      "description": "C-cells normally sit within the thyroid and produce calcitonin. The gland is shown without a visible tumor.",
+      "highlight": ["thyroid_right_lobe", "thyroid_left_lobe"],
+      "symptoms": [],
+      "source_ids": ["statpearls-mtc", "nci-dictionary-mtc"]
+    },
+    {
+      "id": "ret-mutation",
+      "label": "RET Signal Change",
+      "description": "Some MTC is driven by RET gene changes. In inherited cases, a RET change can be present in every cell; in sporadic cases, tumor cells may acquire changes later.",
+      "highlight": ["thyroid_right_lobe"],
+      "symptoms": [],
+      "source_ids": ["nci-mtc", "statpearls-mtc"]
+    },
+    {
+      "id": "early-tumor",
+      "label": "Early Tumor",
+      "description": "A small C-cell tumor is represented inside the thyroid. Many people first encounter MTC as a thyroid nodule or neck mass.",
+      "highlight": ["thyroid_right_lobe", "tumor_mass"],
+      "symptoms": ["neck-swelling"],
+      "source_ids": ["statpearls-mtc", "nci-mtc"]
+    },
+    {
+      "id": "local-invasion",
+      "label": "Local Invasion Risk",
+      "description": "The model emphasizes how close the thyroid is to the recurrent laryngeal nerve. This proximity explains why voice changes matter clinically.",
+      "highlight": ["tumor_mass", "recurrent_laryngeal_nerve"],
+      "symptoms": ["hoarseness"],
+      "source_ids": ["statpearls-rln", "statpearls-mtc"]
+    },
+    {
+      "id": "vascular-involvement",
+      "label": "Vascular Involvement",
+      "description": "The tumor highlight moves toward the jugular vein to explain report language such as compression, encasement, or vessel involvement.",
+      "highlight": ["tumor_mass", "jugular_vein"],
+      "symptoms": ["neck-pain-pressure", "neck-swelling"],
+      "source_ids": ["statpearls-mtc"]
+    },
+    {
+      "id": "lymphatic-spread",
+      "label": "Lymph Node Mapping",
+      "description": "Nearby lymph nodes are highlighted to show why neck ultrasound, staging, and surgical planning often focus on lymph node basins.",
+      "highlight": ["tumor_mass", "lymph_nodes"],
+      "symptoms": ["neck-swelling"],
+      "source_ids": ["statpearls-mtc"]
+    }
+  ],
+  "treatments": [
+    {
+      "name": "Total thyroidectomy",
+      "type": "surgery",
+      "description": "A surgery that removes the thyroid gland. It is included here as educational context because surgery is commonly central to MTC management.",
+      "applicable_stages": ["early-tumor", "local-invasion", "vascular-involvement", "lymphatic-spread"],
+      "source_ids": ["nci-mtc", "statpearls-mtc"]
+    },
+    {
+      "name": "Lymph node dissection",
+      "type": "surgery",
+      "description": "Removal of selected neck lymph node compartments when clinically appropriate. Exact decisions depend on imaging, tumor markers, and surgical judgment.",
+      "applicable_stages": ["local-invasion", "vascular-involvement", "lymphatic-spread"],
+      "source_ids": ["statpearls-mtc"]
+    },
+    {
+      "name": "RET-targeted therapy",
+      "type": "targeted-therapy",
+      "description": "Certain advanced or unresectable cases may use targeted medicines directed at molecular changes. This atlas does not recommend a drug for any individual.",
+      "applicable_stages": ["advanced", "lymphatic-spread"],
+      "source_ids": ["nci-mtc", "statpearls-mtc"]
+    },
+    {
+      "name": "Tumor marker monitoring",
+      "type": "monitoring",
+      "description": "Calcitonin and CEA can be followed by clinicians as tumor markers after diagnosis or treatment.",
+      "applicable_stages": ["early-tumor", "local-invasion", "vascular-involvement", "lymphatic-spread"],
+      "source_ids": ["nci-mtc", "statpearls-mtc"]
+    }
+  ],
+  "ai_suggested_questions": [
+    "Why does voice change happen in thyroid cancer?",
+    "What does Bethesda Category 6 mean?",
+    "How is MTC different from papillary thyroid cancer?",
+    "Why does radioactive iodine not work the same way for MTC?",
+    "What is calcitonin and why do doctors measure it?"
+  ],
+  "references": [
+    {
+      "id": "nci-mtc",
+      "label": "National Cancer Institute: Medullary Thyroid Cancer",
+      "url": "https://www.cancer.gov/pediatric-adult-rare-tumor/rare-tumors/rare-endocrine-tumor/medullary-thyroid-cancer"
+    },
+    {
+      "id": "nci-dictionary-mtc",
+      "label": "NCI Dictionary: Medullary Thyroid Cancer",
+      "url": "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/medullary-thyroid-cancer"
+    },
+    {
+      "id": "statpearls-mtc",
+      "label": "NCBI Bookshelf: Medullary Thyroid Cancer",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK459354/"
+    },
+    {
+      "id": "statpearls-rln",
+      "label": "NCBI Bookshelf: Recurrent Laryngeal Nerve Anatomy",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK470179/"
+    },
+    {
+      "id": "endotext-bethesda",
+      "label": "NCBI Bookshelf Endotext: Bethesda Thyroid Cytopathology Table",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK278969/table/thyroid-nod-canc-eld.T.bethesda_system_f/"
+    }
+  ],
+  "data_sources": [
+    "https://www.cancer.gov/pediatric-adult-rare-tumor/rare-tumors/rare-endocrine-tumor/medullary-thyroid-cancer",
+    "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/medullary-thyroid-cancer",
+    "https://www.ncbi.nlm.nih.gov/books/NBK459354/",
+    "https://www.ncbi.nlm.nih.gov/books/NBK470179/",
+    "https://www.ncbi.nlm.nih.gov/books/NBK278969/table/thyroid-nod-canc-eld.T.bethesda_system_f/"
+  ],
+  "contributed_by": "parth",
+  "last_reviewed": "2026-05-27",
+  "medical_review_status": "needs-review",
+  "version": "1.0"
+}

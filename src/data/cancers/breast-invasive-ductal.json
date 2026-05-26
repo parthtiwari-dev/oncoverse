@@ -1,0 +1,26 @@
+{
+  "id": "breast-invasive-ductal",
+  "atlas_status": "stub",
+  "name": "Breast Cancer - Invasive Ductal",
+  "aliases": ["invasive ductal carcinoma", "IDC", "ductal breast cancer"],
+  "icd11_code": null,
+  "organ_system": "breast",
+  "primary_organ": "breast",
+  "model_file": null,
+  "affected_meshes": [],
+  "overview": "A future atlas entry for invasive ductal breast cancer. This stub reserves the directory slot only.",
+  "epidemiology": {
+    "incidence": "Coming soon"
+  },
+  "symptoms": [],
+  "structures": [],
+  "stages": [],
+  "treatments": [],
+  "ai_suggested_questions": [],
+  "references": [],
+  "data_sources": [],
+  "contributed_by": "parth",
+  "last_reviewed": "2026-05-27",
+  "medical_review_status": "needs-review",
+  "version": "0.1"
+}

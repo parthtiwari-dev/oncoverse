@@ -1,0 +1,26 @@
+{
+  "id": "lung-adenocarcinoma",
+  "atlas_status": "stub",
+  "name": "Lung Adenocarcinoma",
+  "aliases": ["lung adeno", "non-small cell lung adenocarcinoma"],
+  "icd11_code": null,
+  "organ_system": "thoracic",
+  "primary_organ": "lung",
+  "model_file": null,
+  "affected_meshes": [],
+  "overview": "A future atlas entry for lung adenocarcinoma. This stub reserves the directory slot only.",
+  "epidemiology": {
+    "incidence": "Coming soon"
+  },
+  "symptoms": [],
+  "structures": [],
+  "stages": [],
+  "treatments": [],
+  "ai_suggested_questions": [],
+  "references": [],
+  "data_sources": [],
+  "contributed_by": "parth",
+  "last_reviewed": "2026-05-27",
+  "medical_review_status": "needs-review",
+  "version": "0.1"
+}
