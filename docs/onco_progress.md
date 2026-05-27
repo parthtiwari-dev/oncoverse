@@ -22,8 +22,8 @@ What is now proven:
 - The first R3F scene supports auto-orbit, drag/zoom, hover, click selection, and info-panel updates.
 
 Current focus:
-- Stabilize the spatial atlas shell so the 3D specimen stays fully visible without page scrolling.
-- Keep scroll behavior inside panels/sheets only, with no noisy browser chrome in the primary atlas view.
+- Polish the spatial atlas into a distinct biological observatory rather than a generic dark UI.
+- Keep the 3D specimen stable, centered, and primary while panels remain secondary.
 - Improve anatomy fidelity after the placeholder interaction contract feels right.
 
 ---
@@ -62,14 +62,15 @@ Current focus:
 | Performance budget | Open | 3D model size, lazy loading, and mobile frame rate must be watched early. |
 | R3F async chunk | Open | The shell is split from the 3D bundle, but the async WebGL chunk is still large and needs later optimization. |
 | Spatial shell polish | In progress | Current refactor corrected page-scroll pressure, then needed a focused audit for panel scrollbar noise and unstable orbit centering. |
+| Visual identity craft | In progress | Grid-based dark-tech styling is being replaced with a void/cellular atlas direction, editorial type, timeline staging, and calmer motion. |
 
 ---
 
 ## Next Steps
 
-1. Browser-check the spatial atlas shell on desktop and mobile widths.
-2. Refine procedural anatomy proportions, labels, and selected-state polish.
-3. Add a real search/directory surface for the four stub cancers.
+1. Browser-check the visual-system refactor on desktop.
+2. Do a focused mobile pass after desktop craft is approved.
+3. Refine procedural anatomy proportions, labels, and selected-state polish.
 4. Decide the first real GLB/anatomy asset path.
 5. Add focused schema/data validation to the project scripts.
 
@@ -148,3 +149,21 @@ Validation:
 Notes:
 - Do not commit this pass until Parth explicitly approves it.
 - Browser visual review is still needed after refreshing the running Vite app.
+
+### Session 6 - Biological observatory visual system - 2026-05-27
+
+What changed:
+- Replaced the generic grid background direction with a bioluminescent void and faint cellular texture.
+- Added Geist/Instrument Serif typography direction, a cell-based OncoVerse mark, and selected-structure ambient wash.
+- Replaced bottom stage tabs with a medical progression timeline.
+- Reworked the info panel hierarchy so structure relevance, stage, symptoms, and guardrail have distinct visual weights.
+- Rebuilt the directory as a search surface grouped by organ system.
+- Added calmer Framer Motion transitions and stage-aware scene lighting without moving the specimen off-center.
+
+Validation:
+- Targeted ESLint passed for changed UI files.
+- TypeScript project check passed.
+
+Notes:
+- No data schema changes.
+- Do not commit, stage, or push until Parth explicitly asks.

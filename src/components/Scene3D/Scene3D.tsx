@@ -2,12 +2,13 @@ import { OrbitControls } from '@react-three/drei'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
-import type { Mesh } from 'three'
-import type { MeshId } from '../../types/cancer'
+import type { Mesh, PointLight } from 'three'
+import type { MeshId, StageId } from '../../types/cancer'
 
 interface Scene3DProps {
   selectedMeshId: MeshId
   activeMeshes: MeshId[]
+  activeStageId: StageId
   isOrbiting: boolean
   onSelectMesh: (meshId: MeshId) => void
 }
@@ -26,6 +27,44 @@ interface AnatomyMeshProps {
 }
 
 const sceneOrbitTarget: [number, number, number] = [0, 0.14, 0]
+
+const tumorHaloIntensity: Record<StageId, number> = {
+  normal: 0,
+  'ret-mutation': 0.8,
+  'early-tumor': 2.4,
+  'local-invasion': 4.4,
+  'vascular-involvement': 7.2,
+  'lymphatic-spread': 5.2,
+}
+
+function BreathingPointLight() {
+  const lightRef = useRef<PointLight>(null)
+
+  useFrame(({ clock }) => {
+    if (!lightRef.current) {
+      return
+    }
+
+    lightRef.current.intensity = Math.sin(clock.elapsedTime * 0.4) * 0.3 + 18
+  })
+
+  return <pointLight ref={lightRef} color="#6ee7b7" intensity={18} position={[-2.5, 1.8, 3.2]} />
+}
+
+function TumorHaloLight({ activeStageId }: { activeStageId: StageId }) {
+  const lightRef = useRef<PointLight>(null)
+  const targetIntensity = tumorHaloIntensity[activeStageId]
+
+  useFrame(() => {
+    if (!lightRef.current) {
+      return
+    }
+
+    lightRef.current.intensity += (targetIntensity - lightRef.current.intensity) * 0.06
+  })
+
+  return <pointLight ref={lightRef} color="#f97316" distance={3.2} intensity={targetIntensity} position={[0.78, 0.16, 0.72]} />
+}
 
 function AnatomyMesh({
   meshId,
@@ -87,7 +126,7 @@ function MtcAnatomy({
   hoveredMeshId,
   onSelectMesh,
   onHoverMesh,
-}: Omit<Scene3DProps, 'isOrbiting'> & {
+}: Omit<Scene3DProps, 'activeStageId' | 'isOrbiting'> & {
   hoveredMeshId: MeshId | null
   onHoverMesh: (meshId: MeshId | null) => void
 }) {
@@ -226,7 +265,7 @@ function MtcAnatomy({
   )
 }
 
-export function Scene3D({ selectedMeshId, activeMeshes, isOrbiting, onSelectMesh }: Scene3DProps) {
+export function Scene3D({ selectedMeshId, activeMeshes, activeStageId, isOrbiting, onSelectMesh }: Scene3DProps) {
   const [hoveredMeshId, setHoveredMeshId] = useState<MeshId | null>(null)
 
   useEffect(() => {
@@ -241,10 +280,11 @@ export function Scene3D({ selectedMeshId, activeMeshes, isOrbiting, onSelectMesh
     <Canvas camera={{ fov: 36, position: [0, 0.42, 6.7] }} className="h-full w-full">
       <color args={['#0a0a0f']} attach="background" />
       <fog args={['#0a0a0f', 6.4, 11]} attach="fog" />
-      <ambientLight intensity={0.52} />
-      <directionalLight intensity={1.4} position={[3, 4, 5]} />
-      <pointLight color="#6ee7b7" intensity={18} position={[-2.5, 1.8, 3.2]} />
-      <pointLight color="#f97316" intensity={10} position={[2.2, 0.2, 2.4]} />
+      <ambientLight intensity={0.43} />
+      <directionalLight intensity={1.25} position={[3, 4, 5]} />
+      <pointLight color="#1a3a5c" intensity={5.2} position={[0, -2.6, -3.4]} />
+      <BreathingPointLight />
+      <TumorHaloLight activeStageId={activeStageId} />
       <MtcAnatomy
         activeMeshes={activeMeshes}
         hoveredMeshId={hoveredMeshId}

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -12,7 +13,8 @@
   --color-onco-text-primary: #f1f5f9;
   --color-onco-text-muted: #94a3b8;
   --color-onco-text-dim: #64748b;
-  --font-onco-sans: Inter, Geist, ui-sans-serif, system-ui, sans-serif;
+  --font-onco-sans: Geist, Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-onco-display: "Instrument Serif", Georgia, "Times New Roman", serif;
   --font-onco-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
 }
 
@@ -71,4 +73,40 @@ select {
 
 .scrollbar-none::-webkit-scrollbar {
   display: none;
+}
+
+.atlas-void {
+  background:
+    radial-gradient(circle at 68% 18%, rgba(110, 231, 183, 0.075), transparent 30%),
+    radial-gradient(circle at 22% 78%, rgba(26, 58, 92, 0.18), transparent 34%),
+    linear-gradient(118deg, hsl(165 60% 8% / 0.92), hsl(220 30% 4% / 0.98) 52%, #06090f);
+  animation: atlas-void-drift 16s ease-in-out infinite alternate;
+}
+
+.atlas-cell-texture {
+  opacity: 0.038;
+  background-image:
+    linear-gradient(30deg, rgba(110, 231, 183, 0.32) 12%, transparent 12.5%, transparent 87%, rgba(110, 231, 183, 0.32) 87.5%, rgba(110, 231, 183, 0.32)),
+    linear-gradient(150deg, rgba(110, 231, 183, 0.28) 12%, transparent 12.5%, transparent 87%, rgba(110, 231, 183, 0.28) 87.5%, rgba(110, 231, 183, 0.28)),
+    linear-gradient(30deg, rgba(110, 231, 183, 0.2) 12%, transparent 12.5%, transparent 87%, rgba(110, 231, 183, 0.2) 87.5%, rgba(110, 231, 183, 0.2)),
+    linear-gradient(150deg, rgba(110, 231, 183, 0.2) 12%, transparent 12.5%, transparent 87%, rgba(110, 231, 183, 0.2) 87.5%, rgba(110, 231, 183, 0.2));
+  background-position:
+    0 0,
+    0 0,
+    34px 60px,
+    34px 60px;
+  background-size: 68px 120px;
+  mask-image: radial-gradient(circle at 52% 42%, black, transparent 72%);
+}
+
+@keyframes atlas-void-drift {
+  from {
+    filter: hue-rotate(0deg) saturate(1);
+    transform: scale(1);
+  }
+
+  to {
+    filter: hue-rotate(9deg) saturate(1.12);
+    transform: scale(1.035);
+  }
 }
