@@ -1,7 +1,8 @@
 import { OrbitControls } from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
-import { useEffect, useState } from 'react'
+import { Canvas, useFrame } from '@react-three/fiber'
+import { useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
+import type { Mesh } from 'three'
 import type { MeshId } from '../../types/cancer'
 
 interface Scene3DProps {
@@ -24,6 +25,8 @@ interface AnatomyMeshProps {
   onHoverMesh: (meshId: MeshId | null) => void
 }
 
+const sceneOrbitTarget: [number, number, number] = [0, 0.14, 0]
+
 function AnatomyMesh({
   meshId,
   selectedMeshId,
@@ -36,12 +39,24 @@ function AnatomyMesh({
   onSelectMesh,
   onHoverMesh,
 }: AnatomyMeshProps) {
+  const meshRef = useRef<Mesh>(null)
   const isSelected = selectedMeshId === meshId
   const isHighlighted = isSelected || activeMeshes.includes(meshId)
   const isHovered = hoveredMeshId === meshId
 
+  useFrame(({ clock }) => {
+    if (!meshRef.current) {
+      return
+    }
+
+    const hoverScale = isHovered ? 1.045 : 1
+    const tumorPulse = meshId === 'tumor_mass' && isHighlighted ? Math.sin(clock.elapsedTime * 2.4) * 0.025 : 0
+    meshRef.current.scale.setScalar(hoverScale + tumorPulse)
+  })
+
   return (
     <mesh
+      ref={meshRef}
       onClick={(event) => {
         event.stopPropagation()
         onSelectMesh(meshId)
@@ -51,7 +66,6 @@ function AnatomyMesh({
         event.stopPropagation()
         onHoverMesh(meshId)
       }}
-      scale={isHovered ? 1.04 : 1}
     >
       {children}
       <meshStandardMaterial
@@ -78,7 +92,7 @@ function MtcAnatomy({
   onHoverMesh: (meshId: MeshId | null) => void
 }) {
   return (
-    <group rotation={[0.08, -0.28, 0]}>
+    <group position={[0, 0.22, 0]} rotation={[0.08, -0.28, 0]} scale={0.94}>
       <mesh position={[0, -0.15, -0.1]} scale={[0.72, 2.4, 0.5]}>
         <sphereGeometry args={[1, 48, 48]} />
         <meshStandardMaterial color="#263244" opacity={0.18} roughness={0.92} transparent />
@@ -224,8 +238,9 @@ export function Scene3D({ selectedMeshId, activeMeshes, isOrbiting, onSelectMesh
   }, [hoveredMeshId])
 
   return (
-    <Canvas camera={{ fov: 42, position: [0, 0.35, 5.6] }} className="h-full w-full">
+    <Canvas camera={{ fov: 36, position: [0, 0.42, 6.7] }} className="h-full w-full">
       <color args={['#0a0a0f']} attach="background" />
+      <fog args={['#0a0a0f', 6.4, 11]} attach="fog" />
       <ambientLight intensity={0.52} />
       <directionalLight intensity={1.4} position={[3, 4, 5]} />
       <pointLight color="#6ee7b7" intensity={18} position={[-2.5, 1.8, 3.2]} />
@@ -242,8 +257,9 @@ export function Scene3D({ selectedMeshId, activeMeshes, isOrbiting, onSelectMesh
         autoRotateSpeed={0.7}
         enableDamping
         enablePan={false}
-        maxDistance={7.5}
-        minDistance={3.4}
+        maxDistance={8.2}
+        minDistance={3.8}
+        target={sceneOrbitTarget}
       />
     </Canvas>
   )

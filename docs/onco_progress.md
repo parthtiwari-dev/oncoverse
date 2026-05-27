@@ -22,7 +22,8 @@ What is now proven:
 - The first R3F scene supports auto-orbit, drag/zoom, hover, click selection, and info-panel updates.
 
 Current focus:
-- Validate the first interactive MTC slice in browser on desktop and mobile widths.
+- Stabilize the spatial atlas shell so the 3D specimen stays fully visible without page scrolling.
+- Keep scroll behavior inside panels/sheets only, with no noisy browser chrome in the primary atlas view.
 - Improve anatomy fidelity after the placeholder interaction contract feels right.
 
 ---
@@ -60,12 +61,13 @@ Current focus:
 | Medical accuracy review | Open | MTC content needs cited sources and careful wording before public release. |
 | Performance budget | Open | 3D model size, lazy loading, and mobile frame rate must be watched early. |
 | R3F async chunk | Open | The shell is split from the 3D bundle, but the async WebGL chunk is still large and needs later optimization. |
+| Spatial shell polish | In progress | Current refactor corrected page-scroll pressure, then needed a focused audit for panel scrollbar noise and unstable orbit centering. |
 
 ---
 
 ## Next Steps
 
-1. Browser-check the MTC slice on desktop and mobile widths.
+1. Browser-check the spatial atlas shell on desktop and mobile widths.
 2. Refine procedural anatomy proportions, labels, and selected-state polish.
 3. Add a real search/directory surface for the four stub cancers.
 4. Decide the first real GLB/anatomy asset path.
@@ -130,3 +132,19 @@ Validation:
 Notes:
 - MTC data is still marked `needs-review`.
 - The initial app chunk is split from the 3D scene, but the async 3D chunk remains large because Three/R3F/Drei are heavy.
+
+### Session 5 - Spatial atlas shell audit - 2026-05-27
+
+What changed:
+- Moved the app closer to the roadmap's anatomy-first atlas view with a full-viewport canvas and floating overlays.
+- Replaced the hardcoded cancer abbreviation rail with data-driven atlas discovery and organ-system tooling.
+- Hid incidental panel and stage-rail scrollbars while preserving internal scroll behavior.
+- Re-centered orbit behavior around the specimen instead of moving the camera target to each selected mesh.
+
+Validation:
+- Targeted ESLint passed for the changed app, panel, and scene files.
+- TypeScript project check passed.
+
+Notes:
+- Do not commit this pass until Parth explicitly approves it.
+- Browser visual review is still needed after refreshing the running Vite app.
