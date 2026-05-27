@@ -12,6 +12,8 @@ export function AtlasBackground({ selectedMeshId }: AtlasBackgroundProps) {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
       <div className="atlas-void absolute inset-0" />
+      <div className="atlas-ambient-bloom absolute inset-0" />
+      <div className="atlas-ambient-bloom-alt absolute inset-0" />
       <div className="atlas-cell-texture absolute inset-0" />
       <AnimatePresence initial={false}>
         <motion.div
@@ -23,7 +25,7 @@ export function AtlasBackground({ selectedMeshId }: AtlasBackgroundProps) {
           style={{
             background: `radial-gradient(circle at 50% 58%, ${washColor}, transparent 36%), linear-gradient(180deg, transparent 55%, ${washColor})`,
           }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
         />
       </AnimatePresence>
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,9,15,0.72),rgba(6,9,15,0.04)_36%,rgba(6,9,15,0.9))]" />

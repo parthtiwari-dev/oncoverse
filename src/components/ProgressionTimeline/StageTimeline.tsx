@@ -16,12 +16,12 @@ export function StageTimeline({ stages, activeStageId, onSelectStage }: StageTim
 
   return (
     <section className="pointer-events-none absolute inset-x-3 bottom-3 z-40 sm:bottom-5 lg:left-32 lg:right-[440px]">
-      <div className="pointer-events-auto mx-auto max-w-5xl rounded-[1.35rem] border border-white/10 bg-[linear-gradient(180deg,rgba(21,21,31,0.52),rgba(6,9,15,0.72))] px-4 py-4 shadow-[0_22px_90px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.055)] backdrop-blur-2xl">
+      <div className="pointer-events-auto mx-auto max-w-5xl rounded-[1.35rem] border border-white/10 bg-[linear-gradient(180deg,rgba(21,21,31,0.52),rgba(6,9,15,0.72))] px-4 py-4 shadow-[0_22px_90px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-2xl">
         <div className="relative h-16 min-w-0">
-          <div className="absolute left-[1.1rem] right-[1.1rem] top-[1.05rem] h-px bg-white/12" />
+          <div className="absolute left-[1.1rem] right-[1.1rem] top-[1.05rem] h-px bg-[repeating-linear-gradient(90deg,rgba(255,255,255,0.18)_0_7px,transparent_7px_14px)]" />
           <motion.div
             animate={{ scaleX: progress / 100 }}
-            className="absolute left-[1.1rem] right-[1.1rem] top-[1.05rem] h-px origin-left bg-gradient-to-r from-onco-healthy via-onco-tumor to-onco-danger shadow-[0_0_18px_rgba(249,115,22,0.28)]"
+            className="absolute left-[1.1rem] right-[1.1rem] top-[1.05rem] h-px origin-left bg-gradient-to-r from-onco-healthy/60 to-onco-tumor/80 shadow-[0_0_18px_rgba(249,115,22,0.28)]"
             initial={false}
             transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
           />
@@ -60,7 +60,7 @@ export function StageTimeline({ stages, activeStageId, onSelectStage }: StageTim
                   <span
                     className={`block max-w-[9rem] truncate text-[11px] font-medium transition ${
                       isActive
-                        ? 'text-onco-text-primary'
+                        ? 'text-xs font-semibold text-onco-text-primary'
                         : isPast
                           ? 'text-onco-text-muted'
                           : 'text-onco-text-dim group-hover:text-onco-text-muted'

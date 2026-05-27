@@ -21,7 +21,7 @@ export function InfoPanel({ cancer, selectedStructure, activeStage }: InfoPanelP
   const panelKey = `${selectedStructure?.mesh_id ?? cancer.id}-${activeStage?.id ?? 'overview'}`
 
   return (
-    <aside className="scrollbar-none pointer-events-auto absolute inset-x-3 bottom-[5.7rem] z-30 max-h-[34dvh] overflow-y-auto rounded-[1.45rem] border border-white/10 bg-[linear-gradient(180deg,rgba(21,21,31,0.72),rgba(6,9,15,0.9))] px-4 py-4 shadow-[0_28px_110px_rgba(0,0,0,0.38),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl sm:bottom-[6.2rem] sm:max-h-[36dvh] sm:px-5 lg:inset-x-auto lg:bottom-5 lg:right-5 lg:top-5 lg:w-[390px] lg:max-h-[calc(100dvh-2.5rem)] lg:px-6 lg:py-6">
+    <aside className="scrollbar-none pointer-events-auto absolute inset-x-3 bottom-[5.7rem] z-30 max-h-[34dvh] overflow-y-auto rounded-[1.45rem] border border-white/10 bg-[linear-gradient(180deg,rgba(21,21,31,0.72),rgba(6,9,15,0.9))] px-4 py-4 shadow-[0_28px_110px_rgba(0,0,0,0.38),inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-2xl sm:bottom-[6.2rem] sm:max-h-[36dvh] sm:px-5 lg:inset-x-auto lg:bottom-5 lg:right-5 lg:top-5 lg:w-[390px] lg:max-h-[calc(100dvh-2.5rem)] lg:px-6 lg:py-6">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
           <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-onco-text-dim">

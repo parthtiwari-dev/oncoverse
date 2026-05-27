@@ -32,8 +32,8 @@ function AtlasToolButton({ icon: Icon, label, isActive, isDisabled, onClick }: A
       aria-label={label}
       className={`grid h-11 w-11 place-items-center rounded-full border backdrop-blur-xl transition ${
         isActive
-          ? 'border-onco-healthy/55 bg-onco-healthy/14 text-onco-healthy shadow-[0_0_28px_rgba(110,231,183,0.14)]'
-          : 'border-white/10 bg-onco-bg/42 text-onco-text-muted hover:border-onco-healthy/35 hover:text-onco-text-primary'
+          ? 'border-onco-healthy/55 bg-onco-healthy/14 text-onco-healthy shadow-[0_0_28px_rgba(110,231,183,0.14),inset_0_1px_0_rgba(255,255,255,0.07)]'
+          : 'border-white/10 bg-onco-bg/42 text-onco-text-muted shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] hover:border-onco-healthy/35 hover:text-onco-text-primary'
       } ${isDisabled ? 'cursor-not-allowed opacity-35 hover:border-white/10 hover:text-onco-text-muted' : ''}`}
       disabled={isDisabled}
       onClick={onClick}
@@ -122,7 +122,7 @@ function App() {
       </section>
 
       <header className="pointer-events-none absolute left-3 right-3 top-3 z-30 flex items-start justify-between gap-3 sm:left-5 sm:right-5 sm:top-5 lg:right-[420px]">
-        <div className="pointer-events-auto min-w-0 rounded-[1.35rem] border border-white/10 bg-[linear-gradient(180deg,rgba(21,21,31,0.52),rgba(6,9,15,0.72))] p-2 shadow-[0_20px_80px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl">
+        <div className="pointer-events-auto min-w-0 rounded-[1.35rem] border border-white/10 bg-[linear-gradient(180deg,rgba(21,21,31,0.52),rgba(6,9,15,0.72))] p-2 shadow-[0_20px_80px_rgba(0,0,0,0.26),inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-2xl">
           <div className="flex items-center gap-2 px-2 pt-1">
             <OncoMark className="h-8 w-8 shrink-0" />
             <div className="min-w-0">
@@ -134,7 +134,7 @@ function App() {
           </div>
 
           <button
-            className="mt-2 flex w-full min-w-0 items-center gap-3 rounded-xl border border-white/10 bg-white/[0.035] px-3 py-2 text-left transition hover:border-onco-healthy/35 hover:bg-onco-healthy/[0.08]"
+            className="mt-2 flex w-full min-w-0 items-center gap-3 rounded-xl border border-white/10 bg-white/[0.035] px-3 py-2 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] transition hover:border-onco-healthy/35 hover:bg-onco-healthy/[0.08]"
             onClick={() => setIsDirectoryOpen(true)}
             type="button"
           >
@@ -149,7 +149,7 @@ function App() {
         </div>
 
         <button
-          className="pointer-events-auto grid h-12 w-12 shrink-0 place-items-center rounded-full border border-white/10 bg-onco-bg/42 text-onco-text-muted shadow-[0_20px_80px_rgba(0,0,0,0.24)] backdrop-blur-2xl transition hover:border-onco-healthy/35 hover:text-onco-text-primary"
+          className="pointer-events-auto grid h-12 w-12 shrink-0 place-items-center rounded-full border border-white/10 bg-onco-bg/42 text-onco-text-muted shadow-[0_20px_80px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-2xl transition hover:border-onco-healthy/35 hover:text-onco-text-primary"
           onClick={() => setIsOrbiting(!isOrbiting)}
           title={isOrbiting ? 'Pause auto orbit' : 'Resume auto orbit'}
           type="button"

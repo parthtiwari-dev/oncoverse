@@ -77,10 +77,21 @@ select {
 
 .atlas-void {
   background:
-    radial-gradient(circle at 68% 18%, rgba(110, 231, 183, 0.075), transparent 30%),
-    radial-gradient(circle at 22% 78%, rgba(26, 58, 92, 0.18), transparent 34%),
-    linear-gradient(118deg, hsl(165 60% 8% / 0.92), hsl(220 30% 4% / 0.98) 52%, #06090f);
-  animation: atlas-void-drift 16s ease-in-out infinite alternate;
+    radial-gradient(circle at 22% 78%, rgba(26, 58, 92, 0.14), transparent 34%),
+    linear-gradient(118deg, hsl(165 60% 8% / 0.86), hsl(220 30% 4% / 0.96) 52%, #06090f);
+}
+
+.atlas-ambient-bloom {
+  background: radial-gradient(circle at 56% 34%, rgba(20, 80, 60, 0.18), transparent 45%);
+  animation: atlas-bloom-primary 8s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+
+.atlas-ambient-bloom-alt {
+  background: radial-gradient(circle at 52% 42%, rgba(15, 40, 80, 0.14), transparent 48%);
+  animation: atlas-bloom-secondary 8s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+  opacity: 0;
 }
 
 .atlas-cell-texture {
@@ -99,14 +110,26 @@ select {
   mask-image: radial-gradient(circle at 52% 42%, black, transparent 72%);
 }
 
-@keyframes atlas-void-drift {
+@keyframes atlas-bloom-primary {
   from {
-    filter: hue-rotate(0deg) saturate(1);
+    opacity: 0.86;
     transform: scale(1);
   }
 
   to {
-    filter: hue-rotate(9deg) saturate(1.12);
-    transform: scale(1.035);
+    opacity: 0.45;
+    transform: scale(1.08) translate3d(1.5%, 1%, 0);
+  }
+}
+
+@keyframes atlas-bloom-secondary {
+  from {
+    opacity: 0.18;
+    transform: scale(1.02);
+  }
+
+  to {
+    opacity: 0.92;
+    transform: scale(1.1) translate3d(-1%, -1.5%, 0);
   }
 }

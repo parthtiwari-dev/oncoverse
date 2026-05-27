@@ -48,7 +48,7 @@ export function CancerDirectory({ activeCancerId, cancers, isOpen, onClose, onSe
         >
           <motion.aside
             animate={{ opacity: 1, x: 0 }}
-            className="scrollbar-none absolute left-3 right-3 top-3 max-h-[calc(100dvh-1.5rem)] overflow-y-auto rounded-[1.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(12,17,25,0.88),rgba(6,9,15,0.94))] p-4 shadow-[0_32px_120px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl sm:left-5 sm:right-auto sm:top-5 sm:w-[430px]"
+            className="scrollbar-none absolute left-3 right-3 top-3 max-h-[calc(100dvh-1.5rem)] overflow-y-auto rounded-[1.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(12,17,25,0.88),rgba(6,9,15,0.94))] p-4 shadow-[0_32px_120px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-2xl sm:left-5 sm:right-auto sm:top-5 sm:w-[430px]"
             exit={{ opacity: 0, x: -18 }}
             initial={{ opacity: 0, x: -18 }}
             transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
@@ -63,7 +63,7 @@ export function CancerDirectory({ activeCancerId, cancers, isOpen, onClose, onSe
                 </h2>
               </div>
               <button
-                className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 text-onco-text-muted transition hover:border-onco-healthy/35 hover:text-onco-text-primary"
+                className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 text-onco-text-muted shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] transition hover:border-onco-healthy/35 hover:text-onco-text-primary"
                 onClick={onClose}
                 title="Close directory"
                 type="button"
@@ -73,7 +73,7 @@ export function CancerDirectory({ activeCancerId, cancers, isOpen, onClose, onSe
               </button>
             </div>
 
-            <label className="mt-5 flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3 transition focus-within:border-onco-healthy/45 focus-within:bg-onco-healthy/[0.055]">
+            <label className="mt-5 flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] transition focus-within:border-onco-healthy/45 focus-within:bg-onco-healthy/[0.055]">
               <Search className="shrink-0 text-onco-text-muted" size={18} strokeWidth={1.8} />
               <input
                 autoFocus

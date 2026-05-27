@@ -167,3 +167,22 @@ Validation:
 Notes:
 - No data schema changes.
 - Do not commit, stage, or push until Parth explicitly asks.
+
+### Session 7 - Atmosphere and material polish - 2026-05-27
+
+What changed:
+- Strengthened the void with a visible 8s ambient bloom and kept mesh color wash as a subtle secondary layer.
+- Added consistent glass top-edge light catch across the atlas shell.
+- Moved the 3D camera closer, added desktop orbit-target offset, and kept mobile centered.
+- Converted procedural anatomy surfaces to per-tissue physical materials while keeping tumor dense and opaque.
+- Refined local-only scene lighting; no external HDR or Drei environment presets.
+- Updated the stage timeline with dashed dormant connectors and a healthy-to-tumor progression fill.
+- Rebuilt the small cell mark so it reads more clearly at icon size.
+
+Validation:
+- Targeted ESLint passed for changed UI files.
+- TypeScript project check passed.
+
+Notes:
+- `docs.zip` was intentionally not touched.
+- Browser visual review is still required by Parth.
